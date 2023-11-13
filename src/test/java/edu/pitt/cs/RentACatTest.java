@@ -313,17 +313,17 @@ public class RentACatTest {
 	 * testBadgerPlayCalled method.
 	 */
 
-	@Test
-	public void testReturnCatNumCats3() {
-		r.addCat(c1);
-        r.addCat(c2);
-        r.addCat(c3);
-		Mockito.when(c1.getRented()).thenReturn(false);
-        Mockito.when(c2.getRented()).thenReturn(true);
-        Mockito.when(c3.getRented()).thenReturn(false);
-		assertTrue("returnCat(2) does not return true after cat 2 is rented", r.returnCat(2));
-		Mockito.verify(r, Mockito.times(1)).returnCat(2);
-		Mockito.verify(r, Mockito.times(0)).returnCat(1);
-		Mockito.verify(r, Mockito.times(0)).returnCat(3);
-	}
+     @Test
+     public void testReturnCatNumCats3() {
+         r.addCat(c1);
+         r.addCat(c2);
+         r.addCat(c3);
+         Mockito.when(c1.getRented()).thenReturn(false);
+         Mockito.when(c2.getRented()).thenReturn(true);
+         Mockito.when(c3.getRented()).thenReturn(false);
+         assertTrue("returnCat(2) does not return true after cat 2 is rented", r.returnCat(2));
+         Mockito.verify(c2, Mockito.times(1)).returnCat();
+         Mockito.verify(c1, Mockito.times(0)).returnCat();
+         Mockito.verify(c3, Mockito.times(0)).returnCat();
+     }
 }
